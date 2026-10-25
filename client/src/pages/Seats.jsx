@@ -18,7 +18,7 @@ export default function Seats() {
 
   useEffect(() => {
     load();
-    const s = io();
+    const s = io(import.meta.env.VITE_API_URL || undefined);
     s.emit('join', id);
     s.on('seats:changed', load);
     return () => { s.emit('leave', id); s.disconnect(); };
