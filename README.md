@@ -1,42 +1,100 @@
-# iMovies – Movie Ticket Booking (MERN)
+# iMovies – Online Movie Ticket Booking System
 
-React + Vite client, Node/Express API, MongoDB, Socket.io for live seat updates.
+## 1. Introduction
+- **Project Title:** iMovies – Online Movie Ticket Booking System
+- **Team Member:** Harshita Singh
+- **Role:** Full-Stack Developer (Individual Project)
 
-## Run locally
-Requirements: Node 18+, MongoDB (local or Atlas).
+## 2. Project Overview
+iMovies is a web application that allows users to browse movies, view showtimes, select seats, and book cinema tickets online.
+
+**Key Features:**
+- User registration and JWT-based authentication
+- Movie search, filtering, ratings, and reviews
+- Theatre and show management
+- Interactive seat selection with real-time availability
+- Ticket booking, cancellation, and booking history
+- Watchlist and favourites
+- Admin dashboard for managing movies, theatres, shows, users, and bookings
+- Mock payment flow and email notifications (when SMTP is configured)
+
+## 3. Architecture
+- **Frontend:** React 18, Vite, React Router, Axios, CSS
+- **Backend:** Node.js, Express.js, REST APIs, Socket.IO
+- **Database:** MongoDB with Mongoose; stores users, movies, theatres, shows, bookings, payments, and reviews.
+
+## 4. Setup Instructions
+
+**Prerequisites:** Node.js 18+, npm 9+, Git, and MongoDB Atlas or local MongoDB.
 
 ```bash
-# 1. API
+git clone https://github.com/harshita-singh1600/imovies-movie-booking.git
+cd imovies-movie-booking
 cd server
-cp .env.example .env        # set MONGO_URI and JWT_SECRET
 npm install
-npm run seed                # demo movies, theater, shows + users
-npm run dev                 # http://localhost:5000
-
-# 2. Client (new terminal)
-cd client
-npm install
-npm run dev                 # http://localhost:5173
 ```
-Demo logins after seeding: `admin@imovies.com / admin123` (admin), `user@imovies.com / user123`.
 
-## What is included
-- Register / login (JWT, bcrypt), role-based admin routes
-- Movie listing with search and genre/language filters, details, reviews and ratings
-- Watchlist (favorites)
-- Theaters and shows (admin), seat grid per show
-- Seat locking with expiry (atomic per-seat update) and live updates over Socket.io
-- Booking, cancellation, booking history
-- Payments: `PAYMENT_MODE=mock` (default) confirms instantly; `razorpay` creates a real order and verifies the signature on the server (you still need to add Razorpay Checkout on the client)
-- Email notifications via SMTP (logged to the console if SMTP is not configured; SMS is not implemented)
-- Admin dashboard: stats, add movie/theater/show, recent bookings
-- Security: helmet, CORS, rate limiting, Mongo sanitization, input checks
+Create `server/.env` using `.env.example` and configure `PORT`, `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL`, and `PAYMENT_MODE`.
 
-## API summary
-- Auth: `POST /api/auth/register|login`, `GET /api/auth/me`
-- Catalog: `GET /api/movies`, `GET /api/movies/:id`, `GET /api/shows?movie=`, `GET /api/shows/:id`, reviews, favorites
-- Booking: `POST /api/shows/:id/lock|unlock`, `POST /api/bookings`, `GET /api/bookings/me`, `DELETE /api/bookings/:id`, `POST /api/payments/order|verify`
-- Admin: `/api/admin/stats|bookings|users` plus POST/DELETE on movies, theaters, shows
+Install frontend dependencies:
 
-## Notes
-A working starting point, not yet load-tested. Before deploying: set strong secrets, enable HTTPS, add payment webhooks.
+```bash
+cd ../client
+npm install
+```
+
+## 5. Folder Structure
+
+- **client/** – React pages, routing, authentication context, API integration, and styling.
+- **server/** – Express server, MongoDB models, API routes, middleware, booking services, and notifications.
+
+## 6. Running the Application
+
+Start the backend:
+
+```bash
+cd server
+npm start
+```
+
+Start the frontend in another terminal:
+
+```bash
+cd client
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser. The backend runs on `http://localhost:5000`.
+
+## 7. API Documentation
+
+All endpoints use `/api`. Protected endpoints require a JWT bearer token.
+
+- **Authentication:** `/auth/register`, `/auth/login`, `/auth/me`
+- **Movies:** `/movies`, `/movies/:id`, `/movies/:id/reviews`
+- **Theatres and Shows:** `/theaters`, `/shows`, `/shows/:id`
+- **Bookings:** `/shows/:id/lock`, `/shows/:id/unlock`, `/bookings`, `/bookings/me`
+- **Payments:** `/payments/order`, `/payments/verify`
+- **Favourites:** `/favorites`, `/favorites/:movieId`
+- **Admin:** `/admin/stats`, `/admin/bookings`, `/admin/users`
+
+## 8. Authentication
+Passwords are hashed using bcrypt, and JWTs are used for authentication. Role-based authorization restricts administrative operations to admin users.
+
+## 9. User Interface
+The application includes movie listings, movie details, seat selection, login/registration, booking history, and an admin dashboard. Screenshots can be added to this README.
+
+## 10. Testing
+Manual functional testing covers authentication, movie browsing, seat locking, bookings, cancellations, payments, and admin access. Automated tests are planned for future development.
+
+## 11. Future Enhancements
+- Complete Razorpay Checkout integration and automatic refunds
+- QR-code tickets and SMS notifications
+- Movie recommendations and promotional offers
+- Automated testing, pagination, and performance improvements
+
+**GitHub:** https://github.com/harshita-singh1600/imovies-movie-booking
+
+**Demo Video:** https://drive.google.com/drive/folders/1gskg_JlwGnd2ZKt3qDrE9Y_mKk3f_1en?usp=sharing
+
+**Live Demo:** Add your Vercel deployment URL here.
