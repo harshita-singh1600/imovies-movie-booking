@@ -1,6 +1,7 @@
 # iMovies – Online Movie Ticket Booking System
 
 ## 1. Introduction
+The project is developed using the MERN stack, which consists of MongoDB, Express.js, React.js, and Node.js. React.js is used to build the interactive frontend, while Node.js and Express.js handle server-side operations and API requests. MongoDB is used to store application data, including user information, movie details, and booking records. Authentication and role-based access control help distinguish regular users from administrators.
 - **Project Title:** iMovies – Online Movie Ticket Booking System
 - **Team Member:** Harshita Singh
 - **Role:** Full-Stack Developer (Individual Project)
