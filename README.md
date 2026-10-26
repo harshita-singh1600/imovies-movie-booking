@@ -97,4 +97,4 @@ Manual functional testing covers authentication, movie browsing, seat locking, b
 
 **Demo Video:** https://drive.google.com/drive/folders/1gskg_JlwGnd2ZKt3qDrE9Y_mKk3f_1en?usp=sharing
 
-**Live Demo:** Add your Vercel deployment URL here.
+
