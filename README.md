@@ -81,7 +81,7 @@ All endpoints use `/api`. Protected endpoints require a JWT bearer token.
 Passwords are hashed using bcrypt, and JWTs are used for authentication. Role-based authorization restricts administrative operations to admin users.
 
 ## 9. User Interface
-The application includes movie listings, movie details, seat selection, login/registration, booking history, and an admin dashboard. Screenshots can be added to this README.
+The application includes movie listings, movie details, seat selection, login/registration, booking history, and an admin dashboard.
 
 ## 10. Testing
 Manual functional testing covers authentication, movie browsing, seat locking, bookings, cancellations, payments, and admin access. Automated tests are planned for future development.
